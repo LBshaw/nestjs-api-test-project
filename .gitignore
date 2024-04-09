@@ -1,6 +1,5 @@
 # dependencies
 /node_modules
-/package-lock.json
 
 # IDE
 /.idea
@@ -17,6 +16,3 @@ npm-debug.log
 
 # dist
 /dist
-
-# environment
-/.env
