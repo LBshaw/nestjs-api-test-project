@@ -52,7 +52,8 @@ export class AuthService {
       const payload = {
         userId: user.id,
         email: user.email,
-        userName: user.userName,
+        firstName: user.firstName,
+        lastName: user.lastName,
         role: user.role
       };
 
@@ -74,12 +75,14 @@ export class AuthService {
    */
   async signUp(
     email: string,
-    userName: string,
+    firstName: string,
+    lastName: string,
     password: string
   ): Promise<User> {
     const userDto: CreateUserDto = {
       email,
-      userName,
+      firstName,
+      lastName,
       password: await bcrypt.hash(password, 10),
       role: UserRole.User
     };

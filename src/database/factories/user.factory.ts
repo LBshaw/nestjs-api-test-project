@@ -10,12 +10,13 @@ import * as bcrypt from 'bcrypt';
 
 import { User } from "../../users/entities/user.entity";
 import { CreateUserDto } from "../../users/dto/create-user.dto";
-import { UserRole } from "src/common/guards/roles";
+import { UserRole } from "../../common/guards/roles";
 
 
 export default setSeederFactory(User, async (faker): Promise<Partial<User>> => {
     const user: CreateUserDto = {
-        userName: `${faker.person.firstName()} ${faker.person.lastName}`,
+        firstName: faker.person.firstName(),
+        lastName: faker.person.lastName(),
         email: faker.internet.email(),
         role: UserRole.User,
         password: await bcrypt.hashSync("secret@cat", 10),

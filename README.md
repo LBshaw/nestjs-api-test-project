@@ -22,6 +22,11 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Seeding
+```bash
+# Create migration
+$ npm run db:seed
+
 ## Test
 
 ```bash

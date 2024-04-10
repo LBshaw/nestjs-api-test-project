@@ -18,7 +18,8 @@ export default class UserSeeder implements Seeder {
 
         await repository.insert([
             {
-                userName: 'Videl Shaw',
+                firstName: 'Videl',
+                lastName: 'Shaw',
                 email: 'admin@example.com',
                 password: await bcrypt.hashSync("secret@videl", 10),
                 role: UserRole.Admin
