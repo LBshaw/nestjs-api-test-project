@@ -46,8 +46,8 @@ describe('Cats', () => {
     await app.init();
 
     const loginResponse = await request(app.getHttpServer())
-      .post('/auth/login')
-      .send({ email: 'admin@gmail.com', password: '123456' });
+      .post('/auth/signin')
+      .send({ email: 'admin@example.com', password: 'videl@secret' });
     
     authToken = loginResponse.body.data.token;
         
