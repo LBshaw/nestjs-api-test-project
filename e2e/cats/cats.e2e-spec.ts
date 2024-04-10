@@ -1,4 +1,4 @@
-import { ForbiddenException, INestApplication } from '@nestjs/common';
+import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import * as request from 'supertest';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -40,7 +40,7 @@ describe('Cats', () => {
 
     const loginResponse = await request(app.getHttpServer())
       .post('/auth/login')
-      .send({ email: 'admin@gmail.com', password: '123456' });
+      .send({ email: 'admin@example.com', password: 'secret@videl' });
     
     authToken = loginResponse.body.data.token;
         
