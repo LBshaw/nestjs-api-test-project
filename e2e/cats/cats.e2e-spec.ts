@@ -1,4 +1,11 @@
-import { ForbiddenException, INestApplication } from '@nestjs/common';
+/**
+ * E2E testing.
+ * 
+ * @author Videl Shaw
+ * @email videl0680@gmail.com
+ * @updated 10/04/2024
+ */
+import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import * as request from 'supertest';
 import { TypeOrmModule } from '@nestjs/typeorm';
