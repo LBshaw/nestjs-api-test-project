@@ -8,11 +8,13 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import * as request from 'supertest';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { CatsModule } from '../../src/cats/cats.module';
 import { CatsService } from '../../src/cats/cats.service';
 import { AuthModule } from '../../src/auth/auth.module';
 import { CoreModule } from '../../src/core/core.module';
+
+import { config } from '../../src/config/configuration';
 
 describe('Cats', () => {
   const catsService = { findAll: () => ['test'], findOne: () => 'test', create: () => 'test', update: () => 'test', remove: () => 'test' };
@@ -23,16 +25,7 @@ describe('Cats', () => {
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [
-        TypeOrmModule.forRoot({
-          type: 'postgres', // or your database type
-          host: 'localhost',
-          port: 5432,
-          username: 'postgres',
-          password: 'secret@videl',
-          database: 'postgres',
-          entities: ['../**/*.entity.ts'], // Add your entity classes here
-          synchronize: true, // This will auto-create database schema (use with caution in production)
-        }),
+        TypeOrmModule.forRoot(config.typeOrm as TypeOrmModuleOptions),
         CatsModule, 
         AuthModule,
         CoreModule,
@@ -46,7 +39,7 @@ describe('Cats', () => {
     await app.init();
 
     const loginResponse = await request(app.getHttpServer())
-      .post('/auth/login')
+      .post('/auth/signin')
       .send({ email: 'admin@example.com', password: 'secret@videl' });
     
     authToken = loginResponse.body.data.token;
