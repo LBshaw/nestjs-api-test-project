@@ -40,6 +40,29 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## API endpoints
+
+
+- Authentication
+```bash
+POST    /auth/signin
+POST    /auth/signup
+````
+- Cat
+```bash
+POST    /cats
+GET     /cats
+GET     /cats/:id
+PATCH   /cats/:id
+DELETE  /cats/:id
+```
+
+- Favorite
+```bash
+POST    /favorites
+DELETE  /favorites?user_id={:id}&cat_id={:id}
+```
+
 ## Contact
 
 Videl Shaw(email: videl0680@gmail.com)
