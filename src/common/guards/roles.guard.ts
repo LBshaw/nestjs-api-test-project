@@ -1,4 +1,11 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+/**
+ * Define guard policies.
+ * 
+ * @author Videl Shaw
+ * @email videl0680@gmail.com
+ * @updated 09/04/2024
+ */
+import { CanActivate, ExecutionContext, Injectable, Logger } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Roles } from '../decorators/roles.decorator';
 
@@ -12,10 +19,12 @@ export class RolesGuard implements CanActivate {
       return true;
     }
     const request = context.switchToHttp().getRequest();
-    const user = request.user;
-    const hasRole = () =>
-      user.roles.some(role => !!roles.find(item => item === role));
+    const user = request['user'];
 
-    return user && user.roles && hasRole();
+    Logger.log("user: ", user);
+
+    const hasRole = () => user.role === "admin"
+
+    return user && hasRole();
   }
 }
