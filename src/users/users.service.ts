@@ -27,7 +27,8 @@ export class UsersService {
   async create(userDto: CreateUserDto): Promise<Partial<User> & User> {
     const user: Partial<User> = {
       email: userDto.email,
-      userName: userDto.userName,
+      firstName: userDto.firstName,
+      lastName: userDto.lastName,
       password: userDto.password,
       role: UserRole.User
     };

@@ -31,8 +31,8 @@ export const config = {
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DATABASE,
-        synchronize: false,
-        entities: ['**/*.entity{.ts,.js}'],
+        synchronize: true,
+        entities: ['../**/*.entity{.ts,.js}'],
         migrationsTableName: 'migration',
         migrations: ['../migration/*.ts']
     }

@@ -50,7 +50,8 @@ export class AuthController {
   signUp(@Body() userInfo: Record<string, any>) {
     return this.authService.signUp(
       userInfo.email,
-      userInfo.userName,
+      userInfo.firstName,
+      userInfo.lastName,
       userInfo.password
     );
   }

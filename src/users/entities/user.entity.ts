@@ -26,7 +26,10 @@ export class User extends BaseEntityWithTimestamps {
     email: string;
 
     @Column()
-    userName: string;
+    firstName: string;
+
+    @Column()
+    lastName: string;
 
     @Column()
     password: string;
